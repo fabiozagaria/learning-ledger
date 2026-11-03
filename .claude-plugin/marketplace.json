@@ -1,0 +1,16 @@
+{
+  "name": "learning-ledger",
+  "owner": {
+    "name": "Fabio Zagaria"
+  },
+  "plugins": [
+    {
+      "name": "learning-ledger",
+      "source": "./plugins/learning-ledger",
+      "description": "Honest evidence log for learning: quiz, practice, and a local ledger that caps mastery by evidence."
+    }
+  ],
+  "metadata": {
+    "description": "Plugins for honest, evidence-based learning with Claude Code."
+  }
+}

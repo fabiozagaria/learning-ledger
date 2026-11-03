@@ -1,0 +1,27 @@
+{
+  "topics": [
+    {"id": "java-collections", "name": "Java collections and equals/hashCode", "area": "java"},
+    {"id": "java-streams", "name": "Streams and Optional", "area": "java"},
+    {"id": "java-exceptions", "name": "Exception handling", "area": "java"},
+    {"id": "java-concurrency-basics", "name": "Threads, executors and visibility", "area": "java"},
+    {"id": "sql-joins", "name": "SQL joins and aggregation", "area": "databases"},
+    {"id": "sql-indexes", "name": "Indexes and query plans", "area": "databases"},
+    {"id": "db-transactions", "name": "Transactions and isolation levels", "area": "databases"},
+    {"id": "jpa-mapping", "name": "JPA entity mapping and relations", "area": "persistence"},
+    {"id": "jpa-n-plus-one", "name": "N+1 queries and fetch strategies", "area": "persistence"},
+    {"id": "optimistic-locking", "name": "Optimistic locking with @Version", "area": "persistence"},
+    {"id": "spring-di", "name": "Spring dependency injection and bean lifecycle", "area": "spring"},
+    {"id": "spring-mvc-rest", "name": "REST controllers, DTOs and validation", "area": "spring"},
+    {"id": "spring-error-handling", "name": "Centralized error handling", "area": "spring"},
+    {"id": "spring-transactional", "name": "@Transactional behavior and pitfalls", "area": "spring"},
+    {"id": "spring-security-filter-chain", "name": "Spring Security filter chain", "area": "security"},
+    {"id": "jwt-auth", "name": "JWT authentication and refresh tokens", "area": "security"},
+    {"id": "authz-ownership", "name": "Authorization and ownership checks", "area": "security"},
+    {"id": "testing-unit-mockito", "name": "Unit tests with JUnit and Mockito", "area": "testing"},
+    {"id": "testing-integration", "name": "Integration tests with Testcontainers", "area": "testing"},
+    {"id": "docker-compose-dev", "name": "Docker and Compose for local development", "area": "tooling"},
+    {"id": "git-workflow", "name": "Git branching, rebase and conflict resolution", "area": "tooling"},
+    {"id": "redis-caching", "name": "Redis caching and invalidation", "area": "distributed"},
+    {"id": "messaging-basics", "name": "Message queues: delivery guarantees and idempotency", "area": "distributed"}
+  ]
+}
