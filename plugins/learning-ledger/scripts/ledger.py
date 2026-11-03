@@ -391,6 +391,7 @@ def apply_record(topics, payload, today, rest_days):
                "supported_work": p["supported_work"], "key_errors": p["key_errors"],
                "next_action": p["next_action"],
                "topics": [{"id": r["id"], "claimed": r["claimed"],
+                           "from": r["before"]["level"],
                            "level": r["after"]["level"], "capped": r["capped"]}
                           for r in reports]}
     return new_topics, session, reports
@@ -433,6 +434,35 @@ def build_status(topics, today, rest_days):
     return {"today": dv["today"], "weekday": dv["weekday"], "rest_day": dv["rest_day"],
             "total_topics": len(topics), "by_level": by_level, "by_area": by_area,
             "due_count": len(dv["due"]), "unassessed_count": len(dv["unassessed"])}
+
+
+def build_report(topics, sessions, today, days, rest_days):
+    """Summary of sessions in the window (today - days, today]."""
+    start = today - timedelta(days=days)
+    window = [s for s in sessions
+              if start < parse_date(s["date"], "stored session date") <= today]
+    by_type, by_support, touched = {}, {}, {}
+    minutes = 0
+    for s in window:
+        by_type[s["type"]] = by_type.get(s["type"], 0) + 1
+        by_support[s["support"]] = by_support.get(s["support"], 0) + 1
+        minutes += s.get("duration_min") or 0
+        for t in s["topics"]:
+            row = touched.setdefault(t["id"], {
+                "id": t["id"], "sessions": 0, "capped": 0,
+                "from": t.get("from", "unknown"), "to": t["level"]})
+            row["sessions"] += 1
+            row["capped"] += 1 if t["capped"] else 0
+            row["to"] = t["level"]
+    dv = build_due(topics, today, rest_days)
+    return {"from": (start + timedelta(days=1)).isoformat(), "to": today.isoformat(),
+            "sessions": len(window), "minutes_logged": minutes,
+            "by_type": by_type, "by_support": by_support,
+            "unaided_sessions": by_support.get("none", 0),
+            "topics_touched": sorted(touched.values(), key=lambda r: r["id"]),
+            "capped_topic_results": sum(r["capped"] for r in touched.values()),
+            "due_now": [r["id"] for r in dv["due"]],
+            "unassessed_count": len(dv["unassessed"])}
 
 
 # ---------------------------------------------------------------- CLI
@@ -514,6 +544,10 @@ def run(args):
         emit(build_due(topics, today, rest_days))
     elif cmd == "status":
         emit(build_status(topics, today, rest_days))
+    elif cmd == "report":
+        if args.days < 1:
+            raise LedgerError("--days must be at least 1")
+        emit(build_report(topics, store.load_sessions(), today, args.days, rest_days))
     elif cmd == "show":
         if args.id not in topics:
             raise LedgerError(f"unknown topic id {args.id!r}")
@@ -554,6 +588,8 @@ def build_parser():
 
     sub.add_parser("due")
     sub.add_parser("status")
+    rp = sub.add_parser("report")
+    rp.add_argument("--days", type=int, default=7)
     s = sub.add_parser("show")
     s.add_argument("id")
     r = sub.add_parser("record")

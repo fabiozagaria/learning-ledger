@@ -257,6 +257,35 @@ class Views(unittest.TestCase):
         self.assertEqual(s["unassessed_count"], 1)
 
 
+class Report(unittest.TestCase):
+    def test_report_window_and_counts(self):
+        topics = {"t": topic()}
+        sessions = []
+        for on, support, outcome, scen in [("2026-10-20", "none", "autonomous", "A"),
+                                           ("2026-11-02", "hints", "autonomous", "B"),
+                                           ("2026-11-03", "none", "autonomous", "C")]:
+            topics, session, _ = L.apply_record(
+                topics, payload(on=on, support=support, outcome=outcome, scenario=scen,
+                                duration_min=30), date(2026, 11, 3), REST)
+            sessions.append(session)
+        r = L.build_report(topics, sessions, date(2026, 11, 3), 7, REST)
+        self.assertEqual(r["sessions"], 2)
+        self.assertEqual(r["minutes_logged"], 60)
+        self.assertEqual(r["unaided_sessions"], 1)
+        self.assertEqual(r["capped_topic_results"], 1)
+        self.assertEqual(r["topics_touched"][0]["from"], "autonomous")
+        self.assertEqual(r["from"], "2026-10-28")
+
+    def test_report_cli(self):
+        d = tempfile.mkdtemp()
+        base = [sys.executable, "-I", SCRIPT, "--dir", d, "--today", "2026-11-03"]
+        subprocess.run(base + ["init"], capture_output=True, check=True)
+        r = subprocess.run(base + ["report"], capture_output=True, text=True)
+        self.assertEqual(json.loads(r.stdout)["sessions"], 0)
+        r = subprocess.run(base + ["report", "--days", "0"], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 2)
+
+
 class Cli(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

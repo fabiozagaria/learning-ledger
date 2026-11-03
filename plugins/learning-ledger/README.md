@@ -1,5 +1,7 @@
 # learning-ledger
 
+[![tests](https://github.com/fabiozagaria/learning-ledger/actions/workflows/test.yml/badge.svg)](https://github.com/fabiozagaria/learning-ledger/actions/workflows/test.yml)
+
 An honest evidence log for learning, as a [Claude Code](https://claude.com/claude-code) plugin.
 
 Most AI tutors grade you, then decide how well you know the topic, and the same model is both judge and bookkeeper. Over time the record drifts upward: a topic you solved once with hints becomes "mastered".
@@ -11,6 +13,10 @@ Most AI tutors grade you, then decide how well you know the topic, and the same 
 - `consolidated` needs two distinct, unaided scenarios on separate working days. Repeating the same exercise does not count.
 - A miss resets the consolidation progress.
 - Reviews are scheduled in **working days** and skip your rest days (default: Saturday and Sunday).
+
+This is real output of the script (a dry run): the model claimed `autonomous`, but hints were used, so the script capped it.
+
+![log-session dry run](docs/dry-run.svg)
 
 Everything is stored locally in plain files. No account, no network, no dependencies beyond Python 3.
 
@@ -30,11 +36,12 @@ For local development: `claude --plugin-dir ./plugins/learning-ledger`.
 | `/learning-ledger:study-today` | Reads the ledger and recommends one thing to study today. Read-only. |
 | `/learning-ledger:quiz` | One question at a time, free recall, graded out of 30 before any explanation. Modes: quick quiz, interrogation, interview simulation, error review. |
 | `/learning-ledger:practice` | Gives a brief (goal, constraints, success criteria) with no solution, then reviews your code and classifies findings as bug, risk, optional improvement or style. |
+| `/learning-ledger:weekly-report` | Read-only summary of the last 7 days: sessions, unaided vs supported, level movement, what is capped or due. |
 | `/learning-ledger:log-session` | Records the session. Shows a dry run (`before → after`, why a level was capped, next review weekday) and writes only after you confirm. |
 
 ## Quick start
 
-1. Ask Claude: "what should I study today?" (`study-today`). On first use it offers to create the ledger and import a starter topic list (`examples/java-spring-topics.json`, about 23 Java/Spring topics) or you add your own.
+1. Ask Claude: "what should I study today?" (`study-today`). On first use it offers to create the ledger and import a starter topic pack from `examples/` (Java/Spring, Python, SQL/databases, system design, DevOps basics; 68 topics in total) or you add your own.
 2. Run `/learning-ledger:quiz` on a topic.
 3. Run `/learning-ledger:log-session`. Review the dry run, confirm.
 
@@ -51,6 +58,7 @@ python3 scripts/ledger.py topic import examples/java-spring-topics.json
 python3 scripts/ledger.py due
 python3 scripts/ledger.py status
 python3 scripts/ledger.py show jpa-n-plus-one
+python3 scripts/ledger.py report [--days 7]
 echo '{...}' | python3 scripts/ledger.py record --dry-run
 ```
 
@@ -69,6 +77,10 @@ Based on the `score_30` of the session when given, then capped by level: under 5
 ```bash
 python3 -m unittest discover -s tests
 ```
+
+## Contributing
+
+Topic packs are the easiest way in; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Limits
 

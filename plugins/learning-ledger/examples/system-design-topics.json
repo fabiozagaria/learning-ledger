@@ -1,0 +1,64 @@
+{
+  "topics": [
+    {
+      "id": "sd-requirements",
+      "name": "Requirements, estimation and trade-off framing",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-api-design",
+      "name": "API design: REST, pagination, idempotency",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-caching",
+      "name": "Caching strategies and invalidation",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-load-balancing",
+      "name": "Load balancing and horizontal scaling",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-db-scaling",
+      "name": "Replication, sharding and partitioning",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-consistency",
+      "name": "Consistency models and CAP trade-offs",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-queues-streams",
+      "name": "Queues, streams and delivery guarantees",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-idempotency-retries",
+      "name": "Retries, backoff and idempotency",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-rate-limiting",
+      "name": "Rate limiting",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-observability",
+      "name": "Logging, metrics and tracing",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-failure-modes",
+      "name": "Failure modes, timeouts and circuit breakers",
+      "area": "system-design"
+    },
+    {
+      "id": "sd-security-basics",
+      "name": "AuthN/AuthZ, secrets and threat modeling",
+      "area": "system-design"
+    }
+  ]
+}

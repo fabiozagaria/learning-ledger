@@ -1,0 +1,64 @@
+{
+  "topics": [
+    {
+      "id": "py-data-model",
+      "name": "Data model: dunder methods, iteration protocol",
+      "area": "python"
+    },
+    {
+      "id": "py-mutability",
+      "name": "Mutability, references and copying",
+      "area": "python"
+    },
+    {
+      "id": "py-generators",
+      "name": "Generators and lazy evaluation",
+      "area": "python"
+    },
+    {
+      "id": "py-decorators",
+      "name": "Decorators and closures",
+      "area": "python"
+    },
+    {
+      "id": "py-context-managers",
+      "name": "Context managers and resource handling",
+      "area": "python"
+    },
+    {
+      "id": "py-exceptions",
+      "name": "Exception handling and custom errors",
+      "area": "python"
+    },
+    {
+      "id": "py-typing",
+      "name": "Type hints and static checking",
+      "area": "python"
+    },
+    {
+      "id": "py-dataclasses",
+      "name": "Dataclasses and value objects",
+      "area": "python"
+    },
+    {
+      "id": "py-asyncio",
+      "name": "asyncio: tasks, awaiting and cancellation",
+      "area": "python"
+    },
+    {
+      "id": "py-gil-concurrency",
+      "name": "GIL, threads, processes and when to use which",
+      "area": "python"
+    },
+    {
+      "id": "py-packaging",
+      "name": "Packaging, virtual environments and dependencies",
+      "area": "python"
+    },
+    {
+      "id": "py-testing-pytest",
+      "name": "Testing with pytest: fixtures and parametrization",
+      "area": "python"
+    }
+  ]
+}

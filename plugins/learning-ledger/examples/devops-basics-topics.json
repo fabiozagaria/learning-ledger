@@ -1,0 +1,54 @@
+{
+  "topics": [
+    {
+      "id": "ops-linux-shell",
+      "name": "Linux shell, processes and permissions",
+      "area": "devops"
+    },
+    {
+      "id": "ops-git-advanced",
+      "name": "Git: rebase, bisect, reflog and recovery",
+      "area": "devops"
+    },
+    {
+      "id": "ops-docker-images",
+      "name": "Docker images, layers and caching",
+      "area": "devops"
+    },
+    {
+      "id": "ops-docker-networking",
+      "name": "Docker networking and volumes",
+      "area": "devops"
+    },
+    {
+      "id": "ops-compose",
+      "name": "Compose for multi-service local development",
+      "area": "devops"
+    },
+    {
+      "id": "ops-ci-pipelines",
+      "name": "CI pipelines and test automation",
+      "area": "devops"
+    },
+    {
+      "id": "ops-config-secrets",
+      "name": "Configuration and secrets management",
+      "area": "devops"
+    },
+    {
+      "id": "ops-http-tls",
+      "name": "HTTP, DNS and TLS basics",
+      "area": "devops"
+    },
+    {
+      "id": "ops-deploy-strategies",
+      "name": "Deployment strategies and rollbacks",
+      "area": "devops"
+    },
+    {
+      "id": "ops-monitoring-alerts",
+      "name": "Monitoring and alerting",
+      "area": "devops"
+    }
+  ]
+}

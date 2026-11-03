@@ -14,7 +14,7 @@ LEDGER="python3 ${CLAUDE_PLUGIN_ROOT}/scripts/ledger.py"
 ## Steps
 
 1. Run `$LEDGER status` and `$LEDGER due`.
-   - Error "not initialized": offer `$LEDGER init`, then `$LEDGER topic import "${CLAUDE_PLUGIN_ROOT}/examples/java-spring-topics.json"` as a starting list, or adding their own topics with `topic add`. Stop there.
+   - Error "not initialized": offer `$LEDGER init`, then import a starter pack from `"${CLAUDE_PLUGIN_ROOT}/examples/"` with `$LEDGER topic import <file>` (`java-spring`, `python-core`, `sql-databases`, `system-design`, `devops-basics`; ask which fits), or adding their own topics with `topic add`. Stop there.
 2. **If `rest_day` is true,** say it is a rest day, mention what is due next, and let the user decide. Do not push.
 3. Otherwise recommend **one** priority:
    - the first item in `due` (already sorted: weakest level first, then oldest), or

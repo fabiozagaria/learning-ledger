@@ -1,0 +1,59 @@
+{
+  "topics": [
+    {
+      "id": "sql-select-filter",
+      "name": "SELECT, filtering, NULL semantics",
+      "area": "databases"
+    },
+    {
+      "id": "sql-joins-all",
+      "name": "Joins: inner, outer, anti and semi",
+      "area": "databases"
+    },
+    {
+      "id": "sql-aggregation",
+      "name": "GROUP BY, HAVING and aggregates",
+      "area": "databases"
+    },
+    {
+      "id": "sql-window-functions",
+      "name": "Window functions",
+      "area": "databases"
+    },
+    {
+      "id": "sql-cte-subqueries",
+      "name": "CTEs and subqueries",
+      "area": "databases"
+    },
+    {
+      "id": "sql-indexes-plans",
+      "name": "Indexes and reading query plans",
+      "area": "databases"
+    },
+    {
+      "id": "sql-normalization",
+      "name": "Normalization and schema design",
+      "area": "databases"
+    },
+    {
+      "id": "sql-transactions-acid",
+      "name": "Transactions and ACID",
+      "area": "databases"
+    },
+    {
+      "id": "sql-isolation-anomalies",
+      "name": "Isolation levels and anomalies",
+      "area": "databases"
+    },
+    {
+      "id": "sql-locking-deadlocks",
+      "name": "Locking and deadlocks",
+      "area": "databases"
+    },
+    {
+      "id": "sql-migrations",
+      "name": "Schema migrations without downtime",
+      "area": "databases"
+    }
+  ]
+}
