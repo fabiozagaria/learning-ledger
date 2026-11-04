@@ -29,6 +29,8 @@ claude plugin install learning-ledger@learning-ledger
 
 For local development: `claude --plugin-dir ./plugins/learning-ledger`.
 
+The skills need Python 3 on your `PATH`. They try `python3`, `python` and `py`. On Windows `python3` is often a Microsoft Store stub that does not run; install Python 3 from python.org or with `winget install Python.Python.3.12`.
+
 ## Skills
 
 | Skill | What it does |

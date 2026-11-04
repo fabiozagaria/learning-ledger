@@ -1,6 +1,6 @@
 {
   "name": "learning-ledger",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "An honest evidence log for learning: quiz and practice skills plus a local ledger that caps mastery levels by the evidence (no self-grading inflation) and schedules reviews on working days.",
   "author": {
     "name": "Fabio Zagaria"
