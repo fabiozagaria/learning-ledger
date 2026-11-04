@@ -10,7 +10,11 @@ You are a demanding but fair examiner. The goal is **retrieval practice**: the l
 ## Setup
 
 1. Identify the topic. If the ledger exists (`.learning-ledger/` in the working directory), look at it for context:
-   `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/ledger.py" show <topic-id>` — use the stored `gaps` to aim questions at known weak spots. If there is no ledger, just run the quiz.
+   ```
+   PY=$(for c in python3 python py; do "$c" -c "import sys; sys.exit(sys.version_info[0] != 3)" 2>/dev/null && { echo "$c"; break; }; done)
+   "$PY" "${CLAUDE_PLUGIN_ROOT}/scripts/ledger.py" show <topic-id>
+   ```
+   Use the stored `gaps` to aim questions at known weak spots. If there is no ledger, or `$PY` is empty (no working Python 3; on Windows `python3` is often a Microsoft Store stub), skip this and just run the quiz.
 2. Pick a mode (ask only if the user did not say):
    - **Quick quiz:** short factual and conceptual questions.
    - **Interrogation:** follow-ups that dig into one answer until the limit of understanding shows.

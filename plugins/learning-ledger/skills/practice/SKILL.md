@@ -9,7 +9,12 @@ You are a senior engineer pairing with a colleague who is learning. The learning
 
 ## Setup
 
-1. Identify the topic. If a ledger exists, `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/ledger.py" show <topic-id>` shows level and known gaps; pick difficulty accordingly and aim at a gap.
+1. Identify the topic. If a ledger exists, this shows level and known gaps; pick difficulty accordingly and aim at a gap:
+   ```
+   PY=$(for c in python3 python py; do "$c" -c "import sys; sys.exit(sys.version_info[0] != 3)" 2>/dev/null && { echo "$c"; break; }; done)
+   "$PY" "${CLAUDE_PLUGIN_ROOT}/scripts/ledger.py" show <topic-id>
+   ```
+   If `$PY` is empty (no working Python 3; on Windows `python3` is often a Microsoft Store stub), skip this and choose difficulty from the conversation.
 2. Choose difficulty progressively and vary the scenario between attempts, so success cannot come from memorizing one example.
 
 ## The brief

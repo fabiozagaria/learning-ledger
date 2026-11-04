@@ -8,8 +8,11 @@ description: Records a finished study or practice session in the local learning 
 The ledger is a local file store (`.learning-ledger/`). A script enforces the maturity rules, so your job is to report the **evidence accurately**. You cannot raise a level by wording things generously, and you must not try.
 
 ```
-LEDGER="python3 ${CLAUDE_PLUGIN_ROOT}/scripts/ledger.py"
+PY=$(for c in python3 python py; do "$c" -c "import sys; sys.exit(sys.version_info[0] != 3)" 2>/dev/null && { echo "$c"; break; }; done)
+LEDGER="$PY ${CLAUDE_PLUGIN_ROOT}/scripts/ledger.py"
 ```
+
+If `$PY` is empty, no working Python 3 was found (on Windows `python3` is often a Microsoft Store stub that does not run). Tell the user to install Python 3 and stop; do not work around it.
 
 ## Steps
 
